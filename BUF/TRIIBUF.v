@@ -1,13 +1,11 @@
 module TRIIBUF(Y, A, EN, ENB, VDD, VSS );
   input A, EN, ENB;
-  output Y;
+  inout Y;
   inout VDD, VSS;
 
-  always
-    begin
-      case({EN,ENB})
-        2'b10 : Y=~A;
-        default : Y=Z;
-      endcase
-    end
+  wire yint;
+
+  assign yint = A ? VSS : VDD ;
+  assign Y = (EN && ~ENB) ? yint : 1'bZ ;
+
 endmodule

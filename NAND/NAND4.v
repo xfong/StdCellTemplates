@@ -3,5 +3,5 @@ module NAND4(Y, A0, A1, A2, A3, VDD, VSS );
   output Y;
   inout VDD, VSS;
 
-  assign Y=~(A0 && A1 && A2 && A3);
+  assign Y = (A0 && A1 && A2 && A3) ? VSS : VDD ;
 endmodule

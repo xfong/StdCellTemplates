@@ -3,6 +3,6 @@ module HA(COUT, SUM, A, B, VDD, VSS );
   output COUT, SUM;
   inout VDD, VSS;
 
-  assign SUM=A ^ B;
-  assign COUT=A && B;
+  assign SUM=(A ^ B) ? VDD : VSS ;
+  assign COUT=(A && B) ? VDD : VSS ;
 endmodule

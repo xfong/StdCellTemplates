@@ -3,5 +3,5 @@ module INV(Y, A, VDD, VSS );
   output Y;
   inout VDD, VSS;
 
-  assign Y=~A;
+  assign Y = A ? VSS : VDD ;
 endmodule

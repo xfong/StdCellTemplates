@@ -3,5 +3,5 @@ module BUF(Y, A, VDD, VSS );
   output Y;
   inout VDD, VSS;
 
-  assign Y=A;
+  assign Y = A ? VDD : VSS ;
 endmodule

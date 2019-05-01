@@ -4,9 +4,16 @@ module MSFF(Q, QB, D, CLK, CLKB, VDD, VSS );
   output reg QB;
   inout VDD, VSS;
 
-  always @ (posedge CLK, negedge CLKB)
+  wire yint0;
+  wire yint1;
+
+  assign yint0 = CLK ^ CLKB ;
+  assign yint1 = CLK && yint0 ;
+  
+  always @ (posedge yint1)
   begin
-    QB=~D;
-    Q=~QB;
+    QB = ~D;
   end
+
+  assign Q = ~QB;
 endmodule
